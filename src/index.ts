@@ -1,32 +1,41 @@
+const numeralMap = new Map();
+numeralMap.set(1000, 'M');
+numeralMap.set(900, 'CM');
+numeralMap.set(500, 'D');
+numeralMap.set(400, 'CD');
+numeralMap.set(100, 'C');
+numeralMap.set(90, 'XC');
+numeralMap.set(50, 'L');
+numeralMap.set(40, 'XL');
+numeralMap.set(10, 'X');
+numeralMap.set(9, 'IX');
+numeralMap.set(5, 'V');
+numeralMap.set(4, 'IV');
+numeralMap.set(1, 'I');
+
 export const numeralConvert = (num: number): string => {
-    
-    const importantValues = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
     let result: string = '';
-    for (const digit of importantValues) {
-        while (num >= digit) {
-            result += convertDigit(digit);
-            num -= digit;
-        }   
+    for (const [key, value] of numeralMap) {
+        while (num >= key) {
+            result += value;
+            num -= key;
+        }
     }
     return result;
 }
 
-const convertDigit = (digit: number) : string => {
-    switch (digit) {
-        case 1: return "I";
-        case 4: return "IV";
-        case 5: return "V";
-        case 9: return "IX";
-        case 10: return "X";
-        case 40: return "XL";
-        case 50: return "L";
-        case 90: return "XC";
-        case 100: return "C";
-        case 400: return "CD";
-        case 500: return "D";
-        case 900: return "CM";
-        case 1000: return "M";
+export const numeralToNum = (numeral: string): number => {
+    let result: number = 0;
+    for (const [key, value] of numeralMap) {
+        while (numeral.startsWith(value)) {
+            result += key;
+            numeral = numeral.replace(value, '');
+        }
     }
-    return 'This didn\'t work';
+    return result;
 }
+
+
+
+
 

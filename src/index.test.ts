@@ -1,4 +1,4 @@
-import { numeralConvert } from '.';
+import { numeralConvert, numeralToNum } from '.';
 import * as chai from 'chai';
 const should = chai.should();
 
@@ -29,5 +29,35 @@ describe('Should convert to roman numerals', () => {
   });
   it('2421 returns MMCDXXI', () => {
     should.equal('MMCDXXI', numeralConvert(2421));
+  });
+});
+
+describe('Should convert to arabic numbers', () => {
+  it('I returns 1', () => {
+    should.equal(1, numeralToNum('I'));
+  });
+  it('V returns 5', () => {
+    should.equal(5, numeralToNum('V'));
+  });
+  it('III returns 3', () => {
+    should.equal(3, numeralToNum('III'));
+  });
+  it('IV returns 4', () => {
+    should.equal(4, numeralToNum('IV'));
+  });
+  it('IX returns 9', () => {
+    should.equal(9, numeralToNum('IX'));
+  });
+  it('XXXIX returns 39', () => {
+    should.equal(39, numeralToNum('XXXIX'));
+  });
+  it('CCXLVI returns 246', () => {
+    should.equal(246, numeralToNum('CCXLVI'));
+  });
+  it('DCCLXXXIX returns 789', () => {
+    should.equal(789, numeralToNum('DCCLXXXIX'));
+  });
+  it('2421 returns MMCDXXI', () => {
+    should.equal(2421, numeralToNum('MMCDXXI'));
   });
 });

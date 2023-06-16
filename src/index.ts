@@ -1,18 +1,7 @@
-//Lets check git
-const numeralMap = new Map();
-numeralMap.set(1000, 'M');
-numeralMap.set(900, 'CM');
-numeralMap.set(500, 'D');
-numeralMap.set(400, 'CD');
-numeralMap.set(100, 'C');
-numeralMap.set(90, 'XC');
-numeralMap.set(50, 'L');
-numeralMap.set(40, 'XL');
-numeralMap.set(10, 'X');
-numeralMap.set(9, 'IX');
-numeralMap.set(5, 'V');
-numeralMap.set(4, 'IV');
-numeralMap.set(1, 'I');
+const numbers = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+const numerals = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I'];
+let numeralMap = new Map();
+numbers.forEach((number, i) => numeralMap.set(number, numerals[i]));
 
 export const numeralConvert = (num: number): string => {
     let result: string = '';

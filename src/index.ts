@@ -3,7 +3,7 @@ const numerals = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'I
 let numeralMap = new Map();
 numbers.forEach((number, i) => numeralMap.set(number, numerals[i]));
 
-export const numeralConvert = (num: number): string => {
+export const arabicToRoman = (num: number): string => {
     let result: string = '';
     for (const [key, value] of numeralMap) {
         while (num >= key) {
@@ -14,7 +14,7 @@ export const numeralConvert = (num: number): string => {
     return result;
 }
 
-export const numeralToNum = (numeral: string): number => {
+export const romanToArabic = (romanNumeral: string): number => {
     let result: number = 0;
     for (const [key, value] of numeralMap) {
         while (numeral.startsWith(value)) {
@@ -24,8 +24,3 @@ export const numeralToNum = (numeral: string): number => {
     }
     return result;
 }
-
-
-
-
-
